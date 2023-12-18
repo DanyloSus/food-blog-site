@@ -3,6 +3,7 @@ import React from "react";
 import classes from "@/styles/recepies/list-of-recepies.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/components/button";
 
 const ListOfRecepies = () => {
   let sus = [];
@@ -22,9 +23,7 @@ const ListOfRecepies = () => {
           Some Text Some Text Some Text Some Text Some Text Some Text Some Text
           Some Text Some Text Some Text Some Text
         </p>
-        <Link href={`/recepies/${i}`}>
-          <button className={classes.ListPage__Card__Button}>Explore</button>
-        </Link>
+        <Button href={`/recepies/${i}`} text="Explore" />
       </div>
     );
   }
@@ -44,6 +43,7 @@ const ListOfRecepies = () => {
         delicious adventure with our tried-and-true recipes that are sure to
         elevate your home-cooking game. Happy cooking!
       </p>
+      <Button href="/recepies/create" text="Create Your recepie" right />
       <div className={classes.ListPage__Content}>{sus}</div>
     </div>
   );

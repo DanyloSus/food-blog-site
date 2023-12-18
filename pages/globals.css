@@ -59,6 +59,12 @@ button {
   color: var(--accent-color);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 * {
   margin: 0;
   padding: 0;

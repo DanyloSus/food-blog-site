@@ -3,7 +3,8 @@ import { ErrorMessage, Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 
 import classes from "@/styles/contact-me-page.module.css";
-import Input from "@/components/contact/input";
+import Input from "@/components/input";
+import Button from "@/components/button";
 
 const ContactMePage = () => {
   return (
@@ -41,9 +42,7 @@ const ContactMePage = () => {
           </div>
           <Input name="email" label="Your Email" />
           <Input name="text" label="Your Fedback" isArea />
-          <button type="submit" className={classes.ContactPage__Submit}>
-            Send Feedback
-          </button>
+          <Button text="Send Feedback" right />
         </Form>
       </Formik>
     </div>
