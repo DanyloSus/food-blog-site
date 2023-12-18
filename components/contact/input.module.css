@@ -1,0 +1,24 @@
+.Input {
+  width: 100%;
+}
+
+.Input__Texts {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: 4px;
+}
+
+.Input__TextField {
+  width: 100%;
+
+  font-size: 1rem;
+
+  padding: 5px 10px;
+}
+
+.Input__Error {
+  color: crimson;
+}
