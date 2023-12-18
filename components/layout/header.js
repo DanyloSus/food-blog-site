@@ -26,7 +26,7 @@ const Header = () => {
         <Link
           href="/recepies"
           className={
-            pathname == "/recepies" &&
+            pathname.includes("recepies") &&
             classes.Header__NavigationBlock__Link_Active
           }
         >
@@ -35,7 +35,7 @@ const Header = () => {
         <Link
           href="/contact"
           className={
-            pathname == "/contact" &&
+            pathname.includes("contact") &&
             classes.Header__NavigationBlock__Link_Active
           }
         >

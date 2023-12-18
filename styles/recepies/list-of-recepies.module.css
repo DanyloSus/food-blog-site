@@ -1,0 +1,59 @@
+.ListPage__Header {
+  text-align: center;
+
+  margin: 1rem 0;
+}
+
+.ListPage__Content {
+  padding: 2rem 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(177px, 1fr));
+}
+
+.ListPage__Card {
+  width: 100%;
+  height: 300px;
+
+  border-radius: 1rem;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+
+  text-align: center;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.ListPage__Card:hover {
+  box-shadow: 0px 5px 10px var(--active-accent-color);
+
+  transform: scale(1.05);
+}
+
+.ListPage__Card__Image {
+  height: 50%;
+  width: 100%;
+
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.ListPage__Card__Paragraph {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 12px;
+}
+
+.ListPage__Card__Button {
+  width: 75%;
+  padding: 5px 0;
+
+  font-weight: 700;
+  font-size: 1rem;
+
+  cursor: pointer;
+}

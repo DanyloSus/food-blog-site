@@ -18,6 +18,8 @@ body {
   color: var(--font-text);
 
   font-family: var(--main-font-family);
+
+  overflow-x: hidden;
 }
 
 a {

@@ -6,10 +6,10 @@ import Image from "next/image";
 const HomePage = () => {
   return (
     <div className={classes.HomePage}>
-      <h1 className={classes.Header1}>
+      <h1 className={classes.HomePage__Header}>
         Welcome to Food Blog WebSite - Your Culinary Journey Begins Here
       </h1>
-      <div className={classes.Content}>
+      <div className={classes.HomePage__Content}>
         <Image src="/logo.png" alt="logo" width={300} height={300} />
         <div>
           <p>🍽️ Indulge in a World of Flavor and Culinary Delights 🌮🍰</p>
