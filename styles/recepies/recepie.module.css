@@ -1,3 +1,9 @@
+.Recepie__Image {
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
 .Recepie__Header {
   margin: 10px 0;
 

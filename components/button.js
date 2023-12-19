@@ -18,6 +18,7 @@ const Button = (props) => {
       type="submit"
       style={props.right ? { marginLeft: "auto" } : { margin: "0 auto" }}
       className={classes.Button}
+      disabled={props.disabled}
     >
       {props.text}
     </button>

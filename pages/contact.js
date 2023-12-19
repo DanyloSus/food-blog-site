@@ -1,12 +1,34 @@
-import React from "react";
-import { ErrorMessage, Form, Formik, Field } from "formik";
+import React, { useState } from "react";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 import classes from "@/styles/contact-me-page.module.css";
 import Input from "@/components/input";
 import Button from "@/components/button";
 
 const ContactMePage = () => {
+  const [isSending, setIsSending] = useState(false);
+
+  const router = useRouter();
+
+  function submitFormHandler(values) {
+    const contactInfo = {
+      id: new Date().toISOString(),
+      ...values,
+    };
+
+    setIsSending(true);
+
+    fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify({ contact: contactInfo }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(router.push("/"));
+  }
+
   return (
     <div className={classes.ContactPage}>
       <h1 className={classes.ContactPage__Header}>Contact Me</h1>
@@ -31,9 +53,7 @@ const ContactMePage = () => {
             .required("Required"),
           text: Yup.string().required("Required"),
         })}
-        onSubmit={(values) => {
-          console.log(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={submitFormHandler}
       >
         <Form className={classes.ContactPage__Form}>
           <div style={{ display: "flex", gap: "12px", width: "100%" }}>
@@ -42,7 +62,7 @@ const ContactMePage = () => {
           </div>
           <Input name="email" label="Your Email" />
           <Input name="text" label="Your Fedback" isArea />
-          <Button text="Send Feedback" right />
+          <Button text="Send Feedback" right disabled={isSending} />
         </Form>
       </Formik>
     </div>

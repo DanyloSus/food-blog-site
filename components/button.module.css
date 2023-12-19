@@ -9,7 +9,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.Button:hover {
+.Button:hover:not(:disabled) {
   filter: contrast(3);
   transform: scale(1.1);
+}
+
+.Button:disabled {
+  filter: contrast(0.7);
 }

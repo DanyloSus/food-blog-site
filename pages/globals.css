@@ -18,6 +18,7 @@ body {
   color: var(--font-text);
 
   font-family: var(--main-font-family);
+  font-display: swap;
 
   overflow-x: hidden;
 }
@@ -48,6 +49,8 @@ p {
   font-size: 1rem;
 
   text-indent: 1rem;
+
+  overflow-wrap: break-word;
 }
 
 button {

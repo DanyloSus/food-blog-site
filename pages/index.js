@@ -3,7 +3,9 @@ import React from "react";
 import classes from "@/styles/home-page.module.css";
 import Image from "next/image";
 
-const HomePage = () => {
+const HomePage = (props) => {
+  console.log(props);
+
   return (
     <div className={classes.HomePage}>
       <h1 className={classes.HomePage__Header}>

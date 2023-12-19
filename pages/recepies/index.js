@@ -1,29 +1,36 @@
 import React from "react";
+import { getDataFromSQL } from "@/pages/api/recepies/listOfRecepies";
 
 import classes from "@/styles/recepies/list-of-recepies.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import Button from "@/components/button";
 
-const ListOfRecepies = () => {
-  let sus = [];
+const ListOfRecepies = (props) => {
+  const blogs = props.documents;
 
-  for (let i = 0; i < 8; i++) {
-    sus.push(
-      <div className={classes.ListPage__Card}>
+  console.log(blogs.length);
+
+  let blogElement = [];
+
+  for (let i = 0; i < blogs.length; i++) {
+    blogElement.push(
+      <div className={classes.ListPage__Card} key={blogs[i].id}>
         <Image
-          src="/logo.png"
-          alt="Logo"
+          src={
+            blogs[i].imageURL[0] !== "/" && blogs[i].imageURL[0] !== "h"
+              ? "/logo.png"
+              : blogs[i].imageURL[1] === "/"
+              ? "/logo.png"
+              : blogs[i].imageURL
+          }
+          alt={blogs[i].name}
           width={365}
           height={365}
           className={classes.ListPage__Card__Image}
         />
-        <h2 className={classes.ListPage__Card__Header}>Sussy</h2>
-        <p className={classes.ListPage__Card__Paragraph}>
-          Some Text Some Text Some Text Some Text Some Text Some Text Some Text
-          Some Text Some Text Some Text Some Text
-        </p>
-        <Button href={`/recepies/${i}`} text="Explore" />
+        <h2 className={classes.ListPage__Card__Header}>{blogs[i].name}</h2>
+        <p className={classes.ListPage__Card__Paragraph}>{blogs[i].text}</p>
+        <Button href={`/recepies/${blogs[i].id}`} text="Explore" />
       </div>
     );
   }
@@ -44,9 +51,24 @@ const ListOfRecepies = () => {
         elevate your home-cooking game. Happy cooking!
       </p>
       <Button href="/recepies/create" text="Create Your recepie" right />
-      <div className={classes.ListPage__Content}>{sus}</div>
+      <div className={classes.ListPage__Content}>
+        {blogElement.length ? blogElement : <h2>Create Your First Recipe</h2>}
+      </div>
     </div>
   );
 };
 
 export default ListOfRecepies;
+
+export async function getStaticProps() {
+  const documents = await getDataFromSQL();
+
+  const serializableDocuments = documents.map(({ _id, ...rest }) => rest);
+
+  return {
+    props: {
+      documents: serializableDocuments,
+    },
+    revalidate: 10,
+  };
+}

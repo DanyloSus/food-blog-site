@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 import classes from "./header.module.css";
 
 const Header = () => {
-  const pathname = usePathname();
+  const router = useRouter();
+  const pathname = router.pathname;
   console.log(pathname);
 
   return (
@@ -14,7 +15,9 @@ const Header = () => {
       <Link
         href="/"
         className={
-          (pathname === "/" && classes.Header__NavigationBlock__Link_Active) +
+          (pathname === "/"
+            ? classes.Header__NavigationBlock__Link_Active
+            : "") +
           " " +
           classes.Header__LogoBlock
         }
@@ -26,8 +29,9 @@ const Header = () => {
         <Link
           href="/recepies"
           className={
-            pathname.includes("recepies") &&
-            classes.Header__NavigationBlock__Link_Active
+            pathname.includes("recepies")
+              ? classes.Header__NavigationBlock__Link_Active
+              : ""
           }
         >
           Recepies
@@ -35,8 +39,9 @@ const Header = () => {
         <Link
           href="/contact"
           className={
-            pathname.includes("contact") &&
-            classes.Header__NavigationBlock__Link_Active
+            pathname.includes("contact")
+              ? classes.Header__NavigationBlock__Link_Active
+              : ""
           }
         >
           Contact Us
